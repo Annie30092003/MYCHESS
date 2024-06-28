@@ -52,10 +52,10 @@ io.on("connection", function (socket) {
         io.emit("boardState", chess.fen());
 
         // Check for check or checkmate
-        if (chess.in_checkmate()) {
+        if (chess.isCheckmate()) {
           console.log("Checkmate detected");
           io.emit("gameOver", currentPlayer === "w" ? "b" : "w");
-        } else if (chess.in_check()) {
+        } else if (chess.isCheck()) {
           console.log("Check detected");
           io.emit("check", currentPlayer);
         }
